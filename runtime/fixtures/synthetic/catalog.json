@@ -1,0 +1,12 @@
+{
+  "mode": "fixture",
+  "notice": "All products, prices, nutrition, coupons and orders are synthetic demo data.",
+  "products": [
+    { "id": "chicken", "name": "演示鸡肉主食", "category": "main", "priceFen": 1500, "energyKcal": 450, "proteinG": 30, "sugarG": 2, "tags": ["chicken"], "addedSugar": false },
+    { "id": "beef", "name": "演示牛肉主食", "category": "main", "priceFen": 1200, "energyKcal": 410, "proteinG": 18, "sugarG": 2, "tags": ["beef"], "addedSugar": false },
+    { "id": "fish", "name": "演示鱼肉主食", "category": "main", "priceFen": 1300, "energyKcal": 390, "proteinG": 21, "sugarG": 1, "tags": ["fish"], "addedSugar": false },
+    { "id": "corn", "name": "演示玉米配菜", "category": "side", "priceFen": 400, "energyKcal": 70, "proteinG": 3, "sugarG": 3, "tags": ["corn"], "addedSugar": false },
+    { "id": "zero", "name": "演示无糖饮品", "category": "drink", "priceFen": 300, "energyKcal": 0, "proteinG": 0, "sugarG": 0, "tags": [], "addedSugar": false },
+    { "id": "cola", "name": "演示含糖饮品", "category": "drink", "priceFen": 300, "energyKcal": 120, "proteinG": 0, "sugarG": 25, "tags": [], "addedSugar": true }
+  ]
+}

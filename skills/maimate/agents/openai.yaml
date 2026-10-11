@@ -1,0 +1,6 @@
+interface:
+  display_name: "麦Mate · MyMate"
+  short_description: "麦当劳选餐、老样子与可控惊喜，带个人偏好记忆和麦之宝库视觉指引"
+  default_prompt: "用 $maimate 帮我按今天的预算和口味选一餐麦当劳。"
+policy:
+  allow_implicit_invocation: true

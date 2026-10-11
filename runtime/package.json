@@ -1,0 +1,29 @@
+{
+  "name": "mcmate",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.21.0" },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/mcp-server.js",
+    "dev": "tsx src/mcp-server.ts",
+    "demo": "tsx src/cli.ts demo",
+    "cli": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/client": "2.3.1",
+    "@modelcontextprotocol/server": "2.3.1",
+    "@toon-format/toon": "4.4.0",
+    "ajv": "8.20.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

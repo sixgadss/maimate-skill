@@ -1,0 +1,25 @@
+Use case: ui-mockup.
+Create ONE high-resolution landscape product design presentation, approximately 3840x2160. It shows THREE readable flat mobile app screens side by side, separated by generous neutral gutters, no phone hardware, no rounded phone frames, no fake status bars, no browser chrome. Each screen has a tall mobile aspect ratio, all content fits without cropping. Three screens represent different flows in the same proposed McDonald's China app redesign called 麦Mate / MyMate. This is a concept with demo food and no live prices.
+Overall art direction: playful but highly usable everyday food ordering. Treat this as professional native app UI, NOT a marketing landing page or a cinematic poster. Warm lightly tinted cream background, rich brown typography, restrained golden yellow accents, mostly flat functional open layouts. App top bars, modest headlines, useful touch controls, tab navigation. Gold accent area under 3% of overall interface. No giant headings, no white on yellow, no gradients, no purple/blue, no neon, no glows, no card-in-card, no equal three-feature-card grid, no fake testimonials or metrics, no emojis. Consistent monoline icons. Bricolage Grotesque-like Latin logo typography paired with clean Chinese sans-serif.
+At top of entire composition place compact heading: 麦Mate，My mate。
+Small subtitle: 产品架构概念 · 界面与餐品均为示意
+Do not invent any other data. All prices must be — or 待核价. No countdowns, no coupon discount amounts.
+TREASURY VISUAL LANGUAGE: original thin gold arch outlines resembling a sequence of open pantry gateways, some single and some double arches with a quiet subtle McDonald's golden arches connection. Warm matte, NOT elaborate palace sculpture. Different familiar food silhouettes visible through different small archways. The treasure metaphor conveys accessible variety and ownership. One small arch motif is carried across icons, saved meals and the selected result. Food rendering can be appetizing photorealistic but clearly illustrative.
+LEFT SCREEN: label above screen 点餐.
+Native compact brand header 麦Mate and a small restrained golden arches mark. Below a full-width clear context line 选择门店 and compact segmented controls 到店 / 外送. Modest heading 今天怎么吃？ Left-aligned.
+Small decorative panorama of THREE staggered slender gold arch openings along the right half of an otherwise cream strip, one burger, one corn cup and one drink visible; decoration occupies no more than quarter of screen height and never behind text.
+Main full-width warm neutral input panel with text 说说今天想怎么吃 and below it a primary small gold button 帮我选一餐. Under input a row of short outlined controls 省一点 / 多人一起 / 换口味. Then a prominent separate full-width OUTLINED button 直接点餐, followed by a simple horizontal row 我的老样子 with a small meal thumbnail and arrow, secondary label 演示收藏. Then a separated understated link 给我点惊喜. Bottom tab bar exact labels 点餐 / 宝库 / 订单 / 我的, 点餐 active.
+MIDDLE SCREEN: label above screen 麦之宝库.
+Native header 我的麦之宝库. Subtitle 常点的、能用的、想试的，都在这里。
+Below a simple horizontal text selector 常点组合 / 我的优惠 / 想尝试 with 常点组合 active. Main saved meal is a modest medium-size food still life sitting in front of one thin gold double arch, burger with side and drink; open section not enclosed in a colored card. Title 演示收藏组合. Small supporting text 下次还能照着点 and action 再来一餐.
+Below that a flat list row 收藏新组合 with a plus icon. Fine separator. Heading 今天想发现什么？ with two functional list rows 换一种主食 and 看看新品. Small visible note 是否可点，以当前门店为准。 Bottom tabs 点餐 / 宝库 / 订单 / 我的, 宝库 active.
+RIGHT SCREEN: label above screen 这一餐.
+Native header 这一餐 with back arrow. Visible small status 组合草稿 · 待核价.
+A compact context strip 一个人 / 无糖饮品. Moderate heading 先看看这份组合。
+Below, appetizing meal photograph of an illustrative chicken burger, corn cup and takeaway drink in front of a very subtle partial thin gold arch; photo occupies about a quarter of screen, not giant poster.
+Title 演示鸡肉汉堡组合. Secondary line 鸡肉汉堡 · 玉米杯 · 无糖饮品.
+Two concise evidence/constraint lines 无糖偏好已保留 and 价格将在选店后核验.
+Two clear secondary actions 换主食 / 换配餐.
+A fine divider and an inline optional discovery prompt 想尝试一点变化？ with action 看看替换.
+Bottom sticky summary: 当前实付 —, small text 选店后显示完整价格. Single clear gold button 选择门店并核价. Small adjacent or beneath text 保存组合. Do not show payment or order success or claim this unknown-price draft is verified. Bottom nav can be omitted on this checkout-subflow screen; use safe bottom padding.
+Keep layouts coherent, comfortably readable Chinese labels, generous tap targets, all clickable labels stay on one line. No random lorem ipsum, no spelling errors. This concept must visibly support direct ordering, assisted choice, familiar saved meals, and optional surprise, with treasury visuals subordinate to usability. Only render the described design board.
