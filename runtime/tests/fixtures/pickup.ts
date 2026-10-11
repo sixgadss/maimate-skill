@@ -1,0 +1,10 @@
+import type {PurchaseScope,QuoteRequest} from '../../src/contracts/provider.js';
+import type {PickupReview} from '../../src/providers/official-pickup-profile.js';
+import {toolSchemaHash,pickupTools} from '../../src/official/diagnostics.js';
+export const now='2026-10-11T04:00:00.000Z';export const clock=()=>now;
+export const scope:PurchaseScope={restaurantId:'test-store',businessEntityId:'test-be',channel:'pickup',addressRef:null,pickupMethod:null,serviceAt:now,timezone:'Asia/Shanghai',partySize:1};
+export const item={productId:'meal',variantId:null,configurationRef:null,quantity:1};export const request:QuoteRequest={scope,items:[item],couponIds:[],pointsPlanRef:null,tablewareRequested:false};
+export const envelope=(data:unknown)=>({success:true,code:200,data});
+export const tools=pickupTools.map(name=>({name,inputSchema:{type:'object'}}));
+export const review:PickupReview={status:'document_tested',restaurantId:'test-store',businessEntityId:'test-be',operations:Object.fromEntries(tools.map(tool=>[tool.name,{status:'document_tested',schemaHash:toolSchemaHash(tool)}])),units:{menu:'yuan',detail:'yuan',quote:'fen'},completeFeeFields:['deliveryOriginalPrice','tablewarePrice'],listedMealsAreSellable:true,products:[{productId:'meal',name:'契约测试主食',category:'main',foodTags:[],defaultComposition:'single',evidenceId:'test-fact',dietary:{sugarFree:null,addedSugar:null,allergens:null,evidenceId:null}}]};
+export const quoteData={productOriginalPrice:1890,productPrice:1890,deliveryOriginalPrice:0,deliveryPrice:0,originalPrice:1890,discount:0,price:1890,tablewarePrice:0,productList:[{productCode:'meal',productName:'契约测试主食',quantity:1,originalSubtotal:1890,subtotal:1890}],takeWayList:[],mealAssistanceList:[]};

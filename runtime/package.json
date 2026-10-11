@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "engines": { "node": ">=24.21.0" },
+  "engines": {
+    "node": ">=24.21.0"
+  },
   "scripts": {
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
@@ -11,7 +13,13 @@
     "start": "node dist/mcp-server.js",
     "dev": "tsx src/mcp-server.ts",
     "demo": "tsx src/cli.ts demo",
-    "cli": "tsx src/cli.ts"
+    "cli": "tsx src/cli.ts",
+    "web": "tsx src/web-server.ts",
+    "web:build": "node dist/web-server.js",
+    "official:inspect": "tsx src/official-diagnostics.ts",
+    "example:recommendation": "tsx examples/recommendation.ts",
+    "example:preferences": "tsx examples/preferences.ts",
+    "example:provider": "tsx examples/provider.ts"
   },
   "dependencies": {
     "@modelcontextprotocol/client": "2.3.1",

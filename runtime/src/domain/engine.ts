@@ -80,9 +80,9 @@ export async function recommendMeals(input: EngineInput): Promise<Recommendation
     if (ctx.mode === 'usual' && !notices.length) reasons.push({ code: 'USUAL_REORDER', evidenceIds: [m.quote.evidenceId] });
     for (const p of m.products) {
       evidence.set(p.evidenceId, { id: p.evidenceId, kind: 'menu', sourceRef: p.productId, observedAt: now,
-        certainty: 'verified', facts: { name: p.name, category: p.category } });
+        certainty: 'verified', facts: { name: p.name, category: p.category, containsChicken: p.foodTags===null?null:p.foodTags.includes('chicken'), sugarFree: p.dietary.sugarFree, dietaryEvidenceId: p.dietary.evidenceId } });
       if (p.nutrition) evidence.set(p.nutrition.evidenceId, { id: p.nutrition.evidenceId, kind: 'nutrition', sourceRef: p.productId,
-        observedAt: now, certainty: 'verified', facts: { proteinG: p.nutrition.proteinG, energyKcal: p.nutrition.energyKcal } });
+        observedAt: now, certainty: 'verified', facts: { proteinG: p.nutrition.proteinG, energyKcal: p.nutrition.energyKcal, sugarG: p.nutrition.sugarG } });
     }
     if (ctx.goals.includes('protein') && m.proteinG !== null) reasons.push({ code: 'VERIFIED_PROTEIN',
       evidenceIds: m.products.flatMap(p => p.nutrition ? [p.nutrition.evidenceId] : []) });

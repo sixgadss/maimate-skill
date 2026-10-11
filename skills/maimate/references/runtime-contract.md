@@ -100,3 +100,9 @@ list 返回偏好类型、值、范围、来源、证据强度/过期状态和�
 ## 宿主验证与订单边界
 
 宿主需持有独立于模型工具调用的 TurnVerifier。CLI 只从实际终端输入登记精确动作；登记接口不对 MCP 暴露。真实宿主可以注入自己的验证器，不能把“模型提交的 turnId 非空”当验证。默认服务不存在 register-turn、order-prepare 或 order-commit 工具，createOrder 返回 UNSUPPORTED，不产生真实订单。
+
+## 本机 HTTP 示例（独立于 MCP 工具）
+
+GET `/api/status` 返回 mode / state / 配置门店编码；POST `/api/recommend` 只接受 `{ budgetMaxFen, avoidSugaryDrinks, excludeChicken }`，整数分、布尔限制，拒绝未知字段。ready 含单个组合、商品数量、预算/实付/费用/优惠、证据、时间与来源；错误状态不含账号原始数据。服务仅监听 127.0.0.1、同源请求、最多两个执行中的推荐，请求体最多 4096 字节。
+
+这些不是新增的 MCP 工具，也不支持任意自然语言、用户身份参数、偏好持久写入、下单或付款。官方配置失败仍返回 live unavailable。

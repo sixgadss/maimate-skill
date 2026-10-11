@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import {toolSchemaHash} from '../official/diagnostics.js';
 import { decode } from '@toon-format/toon';
 import { AjvJsonSchemaValidator } from '@modelcontextprotocol/client/validators/ajv';
 import type { McDonaldsProvider, ProviderResult, ProviderErrorCode, PurchaseScope, QuoteRequest, CreateOrderRequest, OrderReceipt, ProviderCapabilities } from '../contracts/provider.js';
@@ -9,8 +10,8 @@ const NAMES={getNearbyRestaurants:'query-nearby-stores',getDeliveryRestaurants:'
   getProductDetails:'query-meal-detail',getNutrition:'list-nutrition-foods',getAvailablePromotions:'campaign-calendar',
   getUserCoupons:'query-store-coupons',getRecentOrders:'order-list',calculateOrder:'calculate-price',getOrder:'query-order'} as const;
 type Operation=keyof typeof NAMES;
-export interface Binding { verified:boolean; args:(input:unknown)=>Record<string,unknown>; isSuccess:(raw:unknown)=>boolean; normalize:(raw:unknown,input:unknown)=>unknown }
-export interface BindingProfile { id:string; bindings:Partial<Record<Operation,Binding>> }
+export interface Binding { verified:boolean; expectedSchemaHash?:string; args:(input:unknown)=>Record<string,unknown>; isSuccess:(raw:unknown)=>boolean; normalize:(raw:unknown,input:unknown)=>unknown }
+export interface BindingProfile { id:string; verification?:'document_tested'|'account_verified'; requiredOperations?:Operation[]; bindings:Partial<Record<Operation,Binding>> }
 export const unverifiedProfile:BindingProfile={id:'unverified',bindings:{}};
 export class McdMcpAdapter implements McDonaldsProvider {
   private tools=new Map<string,NativeTool>(); private discovered:Promise<void>|null=null;
@@ -30,7 +31,8 @@ export class McdMcpAdapter implements McDonaldsProvider {
     })().catch(e=>{this.discovered=null;throw e;});
     await this.discovered;
   }
-  private enabled(op:Operation) {return !!this.profile.bindings[op]?.verified && this.tools.has(NAMES[op]);}
+  private matches(op:Operation) {const binding=this.profile.bindings[op],tool=this.tools.get(NAMES[op]);return !!binding?.verified&&!!tool&&(!binding.expectedSchemaHash||binding.expectedSchemaHash===toolSchemaHash(tool));}
+  private enabled(op:Operation) {return (this.profile.requiredOperations??[]).every(required=>this.matches(required))&&this.matches(op);}
   private fail<T>(code:ProviderErrorCode):ProviderResult<T> {return {ok:false,error:{code,message:`麦当劳数据接口：${code}`,retryable:['TIMEOUT','RATE_LIMITED','UNAVAILABLE'].includes(code)}};}
   private good<T>(op:string,data:T):ProviderResult<T> {return {ok:true,data,meta:{provider:'mcd-official',tool:op,mode:'live',observedAt:this.clock(),validUntil:null,schemaVersion:this.profile.id}};}
   async capabilities():Promise<ProviderResult<ProviderCapabilities>> {

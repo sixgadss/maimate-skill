@@ -51,3 +51,9 @@ Binding 默认导出 `{ id, bindings }`；每个操作含 `verified`、`args(inp
 偏好按用户隔离；删除与清空阻止历史重放恢复旧偏好。暂停停止新增学习，保留已有记忆。彻底删除与清空不保留 Undo；不承诺清除用户备份或供应商远程交易。接受推荐不用于制造完成订单。
 
 官方资料：[平台](https://open.mcd.cn/mcp)、[接入文档](https://open.mcd.cn/mcp/doc)。
+
+## 互动网页与只读诊断
+
+`npm run web` 打开无需账号的预算配餐网页；构建后可用 `npm run web:build`。本机默认地址为 `http://127.0.0.1:8787`，可设置 MCMATE_WEB_PORT。网页用临时记忆，不读取 MCMATE_DB 或 MCMATE_USER_ID，也不提供偏好写入与交易入口。详细状态与实测截图见 [互动示例](../docs/interactive-demo.md)。
+
+`npm run official:inspect` 只做 tools/list，输出读取工具名和 schemaHash；缺 Token 时返回 AUTH_REQUIRED、退出码 1，不输出原始上游错误。真实网页要求本机模块默认导出 `createOfficialPickupProfile(review)`，总体和五项操作均完成实际账号复核。默认 document_tested 不启用真实调用，旧通用绑定不作为网页已验收依据。见 [到店自取验证](../docs/official-pickup-validation.md)。

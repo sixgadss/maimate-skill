@@ -2,11 +2,24 @@
 
 **麦Mate，My mate。你的麦之宝库，记得你的口味。**
 
-一个麦当劳个人点餐 Skill：支持明确商品、帮我选、老样子、多人需求拆分，以及可控的口味探索。附完整产品架构、麦之宝库视觉指引和可运行的本地推荐 Runtime。
+先用一个预算，选好这一餐。无需账号的“麦之宝库”网页已可运行：预算、饮品不含糖、排除鸡肉，共用有证据约束的推荐引擎。
+
+```sh
+git clone https://github.com/sixgadss/maimate-skill.git
+cd maimate-skill/runtime
+npm ci --ignore-scripts
+npm run web
+```
+
+需要 Node.js 24.21.0 或更新。打开终端显示的本机地址。详见 [互动示例](docs/interactive-demo.md)。
+
+![麦之宝库网页实际运行截图](docs/assets/interactive-demo.jpg)
+
+同时提供麦当劳个人点餐 Skill：支持明确商品、帮我选、老样子、多人需求拆分，以及可控的口味探索。附完整产品架构、麦之宝库视觉指引和可运行的本地推荐 Runtime。
 
 这是个人项目与概念设计，非麦当劳官方产品。**默认演示使用合成菜单、价格、营养和订单。** 真实账号参数映射尚未验收，包内 Runtime 不下单、不付款、不消耗积分。Skill 的场景指导与当前后端已实现能力分开标注。
 
-![麦Mate 产品概念：点餐、麦之宝库、这一餐](docs/assets/maimate-product-v0.2.png)
+[早期 App 概念图](docs/assets/maimate-product-v0.2.png) · [原创宝库视觉规范](skills/maimate/references/visual-system.md)
 
 ## 安装 Skill
 
@@ -71,9 +84,16 @@ MCP 宿主可用 `node` 启动本仓库的 **绝对路径** `runtime/dist/mcp-se
 | 明确商品精确核价 | Skill 可路由至已连接的原生能力；本地推荐工具没有精确篮子输入 |
 | 多人不同限制与整单核价 | Skill 有流程与降级规则；Runtime 尚无餐位级接口 |
 | 跨轮惊喜去重 | Skill 在已返回候选中按会话筛选；后端没有跨轮排除参数 |
-| 真实菜单、优惠、账号与实时价 | Adapter 基础已实现，仍需逐项验证账号映射 |
+| 真实菜单、优惠、账号与实时价 | 只读诊断与到店自取契约映射已测试；真实账号未验收，默认关闭 |
 | 收藏、愿望清单、订单提交、付款 | 本地后端未实现；不得以文案假装可用 |
-| App 界面 | 架构、视觉规范和生成效果图；没有前端实现 |
+| 预算配餐网页 | 已实现并实际运行；默认合成数据、单人立即自取 |
+| 麦当劳 App 集成 | 仅概念与架构，未部署进官方 App |
+
+## 复用领域模块
+
+在 runtime 目录运行 `npm run example:recommendation`、`npm run example:preferences`、`npm run example:provider`，分别展示推荐引擎、临时偏好读写与供应商契约。示例不连接账号，不授予模型写入可信记忆的权限。
+
+官方配置前可运行 `npm run official:inspect`，只发现工具名和 schema 指纹。缺凭据时明确 AUTH_REQUIRED。生产调用须经本机账号复核，见 [真实接入验收](docs/official-pickup-validation.md)。
 
 ## 文件入口
 

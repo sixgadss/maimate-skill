@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>麦Mate · 选好这一餐</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;700&family=Noto+Sans+SC:wght@400;700&display=swap">
+ <link rel="stylesheet" href="/styles.css"><script type="module" src="/app.js"></script>
+</head>
+<body>
+ <header class="masthead"><a class="wordmark" href="/" aria-label="麦Mate 首页">麦Mate<span>My mate.</span></a><p class="mode" id="mode">正在检查体验模式</p></header>
+ <main>
+  <section class="intro"><h1>这一餐，<br>交给麦Mate。</h1><p>告诉我预算和口味限制。<br>我们一起选一份合适的。</p></section>
+  <div class="meal-layout">
+   <section class="request" aria-labelledby="request-title">
+    <h2 id="request-title">先说说，你想怎么吃</h2>
+    <form id="meal-form" novalidate>
+     <label for="budget">这一餐的预算</label>
+     <div class="budget-line"><span aria-hidden="true">¥</span><input id="budget" name="budget" type="text" inputmode="decimal" value="30" aria-describedby="budget-help form-error" autocomplete="off"><span>以内</span></div>
+     <p id="budget-help" class="help">按完整实付筛选，包含必付费用。</p>
+     <fieldset><legend>这次的口味限制</legend>
+      <label class="choice"><input type="checkbox" id="sugar" checked><span>饮品不含糖</span></label>
+      <label class="choice"><input type="checkbox" id="chicken"><span>不吃鸡肉</span></label>
+     </fieldset>
+     <p id="form-error" class="error" role="alert" hidden></p>
+     <button class="primary" type="submit" id="submit">帮我选</button>
+    </form>
+    <p class="scope" id="scope">本次体验：单人 · 到店自取</p>
+    <p class="help" id="demo-note">示例商品、价格和营养为合成数据。</p>
+   </section>
+   <section class="vault" aria-labelledby="vault-title">
+    <div class="vault-heading"><h2 id="vault-title">你的麦之宝库</h2><p id="result-state" aria-live="polite" aria-atomic="true">等你选好条件</p></div>
+    <div class="door" id="door">
+     <div id="empty"><p class="door-word">留一扇门，<br>给适合你的那一餐。</p><p class="help">选好条件，再打开这一餐。</p></div>
+     <div id="meal-result" hidden>
+      <p class="result-source" id="result-source"></p>
+      <h3>这一餐</h3><ul class="food-list" id="food-list"></ul>
+      <div class="payable"><span id="payable-label">示例实付</span><strong id="payable"></strong></div>
+      <ul class="reasons" id="reasons"></ul>
+      <details id="proof"><summary>查看依据</summary><div class="proof-content"><dl id="quote-lines"></dl><ul id="evidence"></ul></div></details>
+     </div>
+    </div>
+    <p id="result-message" class="help" aria-live="polite"></p>
+   </section>
+  </div>
+ </main>
+ <footer><p>麦Mate，My mate。记得你的口味。</p><p>个人项目与概念体验，非麦当劳官方产品。当前页面只帮选餐。</p></footer>
+</body></html>
